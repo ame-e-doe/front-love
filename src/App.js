@@ -41,22 +41,13 @@ const App = () => {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
-          Love And Donate
+          LOVE AND DONATE
         </Link>
-        <div className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
-              Home
-            </Link>
-          </li>
-
-          {currentUser && (
-            <li className="nav-item">
-              <Link to={"/user"} className="nav-link">
-                User
-              </Link>
-            </li>
-          )}
+        <div className="navbar-nav ml-auto">
+          <form className="d-flex">
+            <input className="form-control me-sm-2" type="text" placeholder="Pesquise imagens" />
+            <button className="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+          </form>
         </div>
 
         {currentUser ? (
@@ -66,9 +57,9 @@ const App = () => {
                 {currentUser.username}
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item dropdown no-arrow">
               <a href="/login" className="nav-link" onClick={logOut}>
-                LogOut
+                SAIR
               </a>
             </li>
           </div>
@@ -76,13 +67,13 @@ const App = () => {
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/login"} className="nav-link">
-                Login
+                LOGIN
               </Link>
             </li>
 
             <li className="nav-item">
               <Link to={"/register"} className="nav-link">
-                Sign Up
+                CADASTRE-SE
               </Link>
             </li>
           </div>
@@ -92,7 +83,6 @@ const App = () => {
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/home" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
           <Route path="/profile" element={<Profile/>} />

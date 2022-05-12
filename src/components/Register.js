@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -10,17 +10,27 @@ const required = (value) => {
   if (!value) {
     return (
       <div className="alert alert-danger" role="alert">
-        This field is required!
+        Este campo é obrigatório.
       </div>
     );
   }
 };
 
-const validEmail = (value) => {
+const email = (value) => {
   if (!isEmail(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        This is not a valid email.
+        Por favor, digite um e-mail válido!
+      </div>
+    );
+  }
+};
+
+const vusername = value => {
+  if (value.length < 3 || value.length > 20) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        O nome deve ter entre 3 e 20 caracteres.
       </div>
     );
   }
@@ -30,46 +40,70 @@ const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
+        A senha deve conter mais de 6 caracteres.
       </div>
     );
   }
 };
 
-const Register = () => {
-  const form = useRef();
-  const checkBtn = useRef();
+export default class Register extends Component {
+  constructor(props) {
+    super(props);
+    this.handleRegister = this.handleRegister.bind(this);
+    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeEmail = this.onChangeEmail.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [successful, setSuccessful] = useState(false);
-  const [message, setMessage] = useState("");
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      successful: false,
+      message: ""
+    };
+  }
 
-  const onChangeEmail = (e) => {
-    const email = e.target.value;
-    setEmail(email);
-  };
+  onChangeUsername(e) {
+    this.setState({
+      username: e.target.value
+    });
+  }
 
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
-  };
+  onChangeEmail(e) {
+    this.setState({
+      email: e.target.value
+    });
+  }
 
-  const handleRegister = (e) => {
+  onChangePassword(e) {
+    this.setState({
+      password: e.target.value
+    });
+  }
+
+  handleRegister(e) {
     e.preventDefault();
 
-    setMessage("");
-    setSuccessful(false);
+    this.setState({
+      message: "",
+      successful: false
+    });
 
-    form.current.validateAll();
+    this.form.validateAll();
 
-    if (checkBtn.current.context._errors.length === 0) {
-      AuthService.register(email, password).then(
-        (response) => {
-          setMessage(response.data.message);
-          setSuccessful(true);
+    if (this.checkBtn.context._errors.length === 0) {
+      AuthService.register(
+        this.state.username,
+        this.state.email,
+        this.state.password
+      ).then(
+        response => {
+          this.setState({
+            message: response.data.message,
+            successful: true
+          });
         },
-        (error) => {
+        error => {
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -77,72 +111,98 @@ const Register = () => {
             error.message ||
             error.toString();
 
-          setMessage(resMessage);
-          setSuccessful(false);
+          this.setState({
+            successful: false,
+            message: resMessage
+          });
         }
       );
     }
-  };
+  }
 
-  return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
-        />
+  render() {
+    return (
+      <div className="col-md-12">
+        <div className="card card-container">
+          <img
+            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+            alt="profile-img"
+            className="profile-img-card"
+          />
 
-        <Form onSubmit={handleRegister} ref={form}>
-          {!successful && (
-            <div>
+          <Form
+            onSubmit={this.handleRegister}
+            ref={c => {
+              this.form = c;
+            }}
+          >
+            {!this.state.successful && (
+              <div>
+                <div className="form-group">
+                  <label htmlFor="username">Nome</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
+                    validations={[required, vusername]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="email">Email</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                    validations={[required, email]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="password">Password</label>
+                  <Input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                    validations={[required, vpassword]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <button className="btn btn-primary btn-block">Cadastrar</button>
+                </div>
+              </div>
+            )}
+
+            {this.state.message && (
               <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  value={email}
-                  onChange={onChangeEmail}
-                  validations={[required, validEmail]}
-                />
+                <div
+                  className={
+                    this.state.successful
+                      ? "alert alert-success"
+                      : "alert alert-danger"
+                  }
+                  role="alert"
+                >
+                  {this.state.message}
+                </div>
               </div>
-
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={password}
-                  onChange={onChangePassword}
-                  validations={[required, vpassword]}
-                />
-              </div>
-
-              <div className="form-group">
-                <button className="btn btn-primary btn-block">Sign Up</button>
-              </div>
-            </div>
-          )}
-
-          {message && (
-            <div className="form-group">
-              <div
-                className={
-                  successful ? "alert alert-success" : "alert alert-danger"
-                }
-                role="alert"
-              >
-                {message}
-              </div>
-            </div>
-          )}
-          <CheckButton style={{ display: "none" }} ref={checkBtn} />
-        </Form>
+            )}
+            <CheckButton
+              style={{ display: "none" }}
+              ref={c => {
+                this.checkBtn = c;
+              }}
+            />
+          </Form>
+        </div>
       </div>
-    </div>
-  );
-};
-
-export default Register;
+    );
+  }
+}
