@@ -1,0 +1,33 @@
+
+body {
+    margin: 0;
+  }
+  
+#form-container {
+    border-radius: 20px;
+}
+  
+.header-form {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: #fff;
+    background-color: #262B2F;
+    text-align: center;
+  }
+  
+.container-conteudo {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    background-color: #303339;
+    color: #fff;
+}
+
+.msg-donate {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: small;
+    color: #fff;
+    text-align: center;
+}

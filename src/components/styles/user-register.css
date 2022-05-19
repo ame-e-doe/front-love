@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+}
+
+.section-form {
+  width: 100vw;
+  height: 100vh;
+  background: url('../imgs/bg-form-register.jpg');
+  background-size: cover;
+}
+
+#form-container {
+  border-radius: 20px;
+}
+
+.header-form {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: x-large;
+  color: #fff;
+  background-color: black;
+  text-align: center;
+}
+
+.btn-submit-form {
+  background-color: #04111d;
+  color: white;
+  height: 45px;
+  border-radius: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+.title-form {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-size: x-large;
+}
+
+.sub-title-form {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
