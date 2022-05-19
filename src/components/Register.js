@@ -151,7 +151,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="email">E-mail</label>
                   <Input
                     type="text"
                     className="form-control"
@@ -163,7 +163,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="password">Password</label>
+                  <label htmlFor="password">Cadastre uma senha</label>
                   <Input
                     type="password"
                     className="form-control"
