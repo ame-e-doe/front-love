@@ -1,0 +1,12 @@
+span {
+    display: inline-block;
+    width: 50%;
+}
+
+p {
+    margin: 2px;
+}
+
+button {
+    width: 100%;
+}

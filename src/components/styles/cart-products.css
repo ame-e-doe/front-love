@@ -1,46 +1,31 @@
-body {
-    background:#eee
-}
-
-.ratings i {
-    font-size: 16px;color: red
-}
-
-.strike-text {
-    color: red;
-    text-decoration: line-through
-}
-
-.product-image {
-    width: 100%
-}
-
-.dot {
-    height: 7px;
-    width: 7px;
-    margin-left: 6px;
-    margin-right: 6px;
-    margin-top: 3px;
-    border-radius: 50%;
-    display: inline-block
-}
-
-.spec-1 {
-    color: #938787;
-    font-size: 15px
-}
-
-h5 {
-    font-weight: 400
-}
-
-.para {
-    font-size: 16px
-}
-
 .valor-produto {
     font-family: "Poppins", sans-serif;
     font-weight: bold;
     font-size: medium;
     color: #2081E2;
 }
+
+.header-form {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+    color: #fff;
+    background-color: black;
+    text-align: center;
+}
+
+.container-conteudo {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    background-color: #303339;
+    color: #fff;
+}
+
+.container-total-pedido {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    background-color: #2081E2;
+    color: #fff;
+  }

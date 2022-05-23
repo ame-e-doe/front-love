@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react/cjs/react.development";
 
-import UserService from "../services/user.service";
+import CardProducts from "../components/views/CardProduct"
 
 const Home = () => {
-  const [content, setContent] = useState("");
 
-  useEffect(() => {
-    UserService.getPublicContent().then(
-      (response) => {
-        setContent(response.data);
-      },
-      (error) => {
-        const _content =
-          (error.response && error.response.data) ||
-          error.message ||
-          error.toString();
+  const url = "localhost:8080/api/v1/products/list";
+  const [products, setProducts] = useState([]);
 
-        setContent(_content);
-      }
-    );
-  }, []);
+  useEffect(()=> {
+    axios.get(url)
+    .then(response => {
+
+      console.log(response);
+      setProducts(response);
+
+    })
+    .catch(error => console.log(error))
+
+  }, [])
+
 
   return (
     <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
+      <section className="row">
+        <CardProducts products={products}/>
+      </section>
     </div>
   );
 };
