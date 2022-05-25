@@ -1,9 +1,16 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/v1'
+import AuthService from '../services/auth.service';
+
+const API_URL = 'http://localhost:8080/api/card/'
+
+let userId = '';
 
 const saveCard = (cardNumber, printedName, expirationTime, securityCode) => {
-    return axios.post(API_URL + 'card', {
+
+    userId = AuthService.getUserId();
+
+    return axios.post(API_URL + 'create/' + userId, {
         cardNumber,
         printedName,
         expirationTime,

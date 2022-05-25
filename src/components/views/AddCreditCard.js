@@ -40,6 +40,7 @@ export default class AddCreditCard extends Component {
         super(props);
         this.handleRegister = this.handleRegister.bind(this);
         this.onChangeCardNumber = this.onChangeCardNumber.bind(this);
+        this.onChangePrintedName = this.onChangePrintedName.bind(this);
         this.onChangeExpirationTime = this.onChangeExpirationTime.bind(this);
         this.onChangeSecurityCode = this.onChangeSecurityCode.bind(this);
 
@@ -49,7 +50,7 @@ export default class AddCreditCard extends Component {
             expirationTime:'',
             securityCode: '',
             successful: false,
-            message: ''
+            message: '',
         };
 
     }
@@ -120,100 +121,100 @@ export default class AddCreditCard extends Component {
     }
 
     render() {
-        return (
-            <div className="col-md-12">
-                <div className="card shadow mb-5 bg-body rounded">
-                    <div className="p-3 rounded-top header-form">Adicionar cartão de crédito</div>
-
+     return (
+        <div className="row align-items-center justify-content-center">
+            <div className="card shadow mb-5 bg-body rounded">
+                <div className="p-3 rounded-top header-form">Adicionar cartão de crédito</div>
                     <Form
                         onSubmit={this.handleRegister}
                         ref={c => {
-                            this.form = c;
+                        this.form = c;
                         }}
                     >
                         {!this.state.successful && (
-                            <><div className="header-form-childre p-4">
-                                <form data-toggle="validator">
-                                    <div className="mb-3">
+                            <div>
+                                <div className="form-group">
+                                    <label htmlFor="cardNumber">Número do Cartão</label>
                                         <Input
-                                            type="number"
+                                            type="text"
                                             className="form-control"
-                                            id="card-number"
                                             name="card-number"
                                             value={this.state.cardNumber}
                                             onChange={this.onChangeCardNumber}
                                             validations={[required, vcard]}
-                                            placeholder="Número do cartão"
-                                            required />
-                                    </div>
-                                    <div className="mb-3">
+                                            placeholder="1234 5678 1234 5678"
+                                        />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="printedName">Nome no cartão</label>
                                         <Input
                                             type="text"
                                             className="form-control"
-                                            id="card-name"
                                             name="card-name"
                                             value={this.state.printedName}
                                             onChange={this.onChangePrintedName}
                                             validations={[required, vprintedName]}
                                             placeholder="Nome impresso no cartão"
-                                            required />
-                                    </div>
-                                    <div className="mb-1">
-                                        <span className="float-start">
-                                            <Input
-                                                type="date"
-                                                className="form-control"
-                                                id="date-valid"
-                                                name="date-valid"
-                                                value={this.state.expirationTime}
-                                                onChange={this.onChangeExpirationTime}
-                                                validations={[required]}
-                                                placeholder="Data de validade"
-                                                required />
-                                        </span>
-                                        <span className="float-end"><span>
-                                            <Input
-                                                type="number"
-                                                className="form-control"
-                                                id="cvv"
-                                                name="cvv"
-                                                value={this.state.securityCode}
-                                                onChange={this.onChangeSecurityCode}
-                                                validations={[required]}
-                                                placeholder="CVV"
-                                                required />
-                                        </span>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div><div className="d-grid m-3">
-                                    <input type="submit" className="btn-submit-form" value="Adicionar Cartão" />
-                                </div></>
-                        )}
-                        
-                        {this.state.message && (
-                            <div className="form-group">
-                                <div
-                                    className={
-                                        this.state.successful
-                                        ? "alert alert-success"
-                                        : "alert alert-danger"
-                                    }
-                                    role="alert"
-                                >
-                                    {this.state.message}
+                                        />
                                 </div>
-                            </div>
-                        )}
-                        <CheckButton
-                        style={{ display: "none" }}
-                        ref={c => {
-                            this.checkBtn = c;
-                        }}
-                        />
-                        </Form>    
-            </div>
-        </div>
-    );
-}
+                                <div className="form-group">
+                                    <label htmlFor='expirationTime'>Data de Validade</label>
+                                        <Input
+                                            type="text"
+                                            className="form-control mb-3"
+                                            name="date-valid"
+                                            value={this.state.expirationTime}
+                                            onChange={this.onChangeExpirationTime}
+                                            validations={[required]}
+                                            placeholder="MM/AA"
+                                            data-mask="00/00"
+                                            maxlength="5"
+                                            autocomplete="off"
+                                        />
+                                </div>
+                                <div className="form-group">  
+                                    <label htmlFor='securityCode'>Código de Segurança</label>
+                                        <Input
+                                            type="text"
+                                            className="form-control mb-3 pt-2"
+                                            name="cvv"
+                                            value={this.state.securityCode}
+                                            onChange={this.onChangeSecurityCode}
+                                            validations={[required]}
+                                            placeholder="CVV"
+                                        />
+                                </div>
+
+                                    <div className="form-group">
+                                        <button className="btn-submit-form">Salvar cartão</button>
+                                    </div>
+                                </div>
+
+                                )}
+                                
+                                {this.state.message && (
+                                    <div className="form-group">
+                                        <div
+                                            className={
+                                                this.state.successful
+                                                ? "alert alert-success"
+                                                : "alert alert-danger"
+                                            }
+                                            role="alert"
+                                        >
+                                            {this.state.message}
+                                        </div>
+                                    </div>
+                                )}
+                                <CheckButton
+                                  style={{ display: "none" }}
+                                  ref={c => {
+                                  this.checkBtn = c;
+                                 }}
+                                />
+                            </Form>                  
+                        </div>
+                    </div>
+        );
+    }
 };
