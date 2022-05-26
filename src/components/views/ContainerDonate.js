@@ -1,8 +1,8 @@
 const ContainerDonate = () => {
 
     return (
-        <div class="section-form d-flex align-items-center justify-content-center">
-            <div class="col-3">
+        //<div class="section-form d-flex align-items-center justify-content-center">
+            <div>
                 <div class="card shadow mb-5 bg-body rounded-2">
                     <div class="p-3 rounded-top header-form">Doação</div>
                     <div class="pt-2 px-2 container-conteudo">
@@ -21,7 +21,7 @@ const ContainerDonate = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        //</div>
     );
 
 };

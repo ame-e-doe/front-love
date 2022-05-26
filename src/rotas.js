@@ -7,6 +7,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
+import Cart from "./components/Cart"
 
 function Rotas() {
     return(
@@ -16,6 +17,7 @@ function Rotas() {
                 <Route exact path="/register" element={<Register/>} />
                 <Route exact path="/profile" element={<Profile/>} />
                 <Route exact path="/user" element={<BoardUser/>} />
+                <Route exact path="/cart" element={<Cart/>} />
             </Routes>
     )
 }
