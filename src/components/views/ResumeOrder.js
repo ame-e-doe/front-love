@@ -1,7 +1,8 @@
-function ResumeOrder() {
+function ResumeOrder({product}) {
+
+    let desconto = 2.00;
 
     return (
-        //<section class="section-form d-flex align-items-center justify-content-center">
         <div>
             <div className="card shadow mb-5 bg-body rounded-2">
                 <div className="p-3 rounded-top header-form">Resumo do pedido</div>
@@ -13,17 +14,17 @@ function ResumeOrder() {
                         </p>
                         <p className="mb-2">
                             <span>Total:</span>
-                            <span style={{textAlign: "end"}}>R$ 376,98</span> 
+                            <span style={{textAlign: "end"}}>R$: {product.value}</span> 
                         </p>
                         <p className="mb-3">
                             <span>Descontos:</span>
-                            <span style={{textAlign: "end"}}>R$ 100,00</span>
+                            <span style={{textAlign: "end"}}>R$: {desconto.toPrecision(3)}</span>
                         </p>
                     </div>
                 </div>
                 <div className="p-3 container-total-pedido">
                     <span>Total Pedido:</span>
-                    <span style={{textAlign: "end"}}>R$ 100,00</span>
+                    <span style={{textAlign: "end"}}>R$: {product.value - desconto}</span>
                 </div>
             </div>
         </div>

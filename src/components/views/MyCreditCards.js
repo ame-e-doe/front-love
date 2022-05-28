@@ -8,7 +8,7 @@ function MyCreditCards() {
                 <div>
                     <div className="d-flex justify-content-center mb-3" style={{alignItems: "center"}}>
                         <span className="px-3" style={{textAlign: "center"}}>
-                          <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
+                          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"/>
                         </span>
                         <span className="px-3" style={{textAlign: "center"}}>Cartão terminado em 7888</span>
                         <span className="px-3" style={{textAlign: "center"}}>Rennan S. Costa</span>
