@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap%27');
 
-body.addCreditCard {
+body.login {
     margin: 0;
-    background-image: url('../../images/login.png') ;
+    background-image:url('../../images/login.png');
+    background-size: cover;
+}
+
+#form-container {
+    border-radius: 20px;
   }
 
-  #form-container {
-    border-radius: 20px;
+  .center {
+    margin: 0;
+    position: absolute;
+    top: 97%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
   
   .header-form {

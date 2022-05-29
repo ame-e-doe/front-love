@@ -1,11 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap%27');
 
-body.addCreditCard {
-    margin: 0;
-    background-image: url('../../images/login.png') ;
-  }
+body.register {
+    background-image: url('../../images/register.png');
+}
 
-  #form-container {
+.center {
+    margin: 0;
+    position: absolute;
+    top: 97%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#form-container {
     border-radius: 20px;
   }
   
@@ -33,7 +41,3 @@ body.addCreditCard {
     font-size: x-large;
   }
   
-  .sub-title-form {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-  }

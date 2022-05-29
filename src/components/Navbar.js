@@ -65,7 +65,7 @@ function Navbar() {
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
               <Link to={"/login"} className="nav-link">
-                LOGIN
+                ENTRAR
               </Link>
             </li>
 

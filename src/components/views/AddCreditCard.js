@@ -5,6 +5,8 @@ import CheckButton from 'react-validation/build/button';
 
 import CardService from '../../services/card-service'
 
+import "../../components/styles/AddCreditCard.css";
+
 const required = (value) => {
     if(!value) {
         return (
@@ -122,6 +124,7 @@ export default class AddCreditCard extends Component {
 
     render() {
      return (
+      <body className='addCreditCard'>
         <div className="row align-items-center justify-content-center">
             <div className="card shadow mb-5 bg-body rounded">
                 <div className="p-3 rounded-top header-form">Adicionar cartão de crédito</div>
@@ -215,6 +218,7 @@ export default class AddCreditCard extends Component {
                             </Form>                  
                         </div>
                     </div>
+            </body>    
         );
     }
 };
