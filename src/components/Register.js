@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
 
 import AuthService from "../services/auth.service";
+
+import "./styles/Register.css";
 
 const required = (value) => {
   if (!value) {
@@ -99,7 +102,7 @@ export default class Register extends Component {
       ).then(
         response => {
           this.setState({
-            message: response.data.message,
+            message: 'Enviamos um link de ativação para: ' + response.data.message + '. Ative-o para fazer seu login.',
             successful: true
           });
         },
@@ -122,87 +125,91 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="col-md-12">
-        <div className="card card-container">
-          <img
-            src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-            alt="profile-img"
-            className="profile-img-card"
-          />
-
-          <Form
-            onSubmit={this.handleRegister}
-            ref={c => {
-              this.form = c;
-            }}
-          >
-            {!this.state.successful && (
-              <div>
-                <div className="form-group">
-                  <label htmlFor="username">Nome</label>
-                  <Input
-                    type="text"
-                    className="form-control"
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.onChangeUsername}
-                    validations={[required, vusername]}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="email">E-mail</label>
-                  <Input
-                    type="text"
-                    className="form-control"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChangeEmail}
-                    validations={[required, email]}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="password">Cadastre uma senha</label>
-                  <Input
-                    type="password"
-                    className="form-control"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChangePassword}
-                    validations={[required, vpassword]}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <button className="btn btn-primary btn-block">Cadastrar</button>
-                </div>
-              </div>
-            )}
-
-            {this.state.message && (
-              <div className="form-group">
-                <div
-                  className={
-                    this.state.successful
-                      ? "alert alert-success"
-                      : "alert alert-danger"
-                  }
-                  role="alert"
-                >
-                  {this.state.message}
-                </div>
-              </div>
-            )}
-            <CheckButton
-              style={{ display: "none" }}
+      <div className="row align-items-center justify-content-center">
+          <div className="card shadow mb-5 bg-body rounded">
+            <div className="p-4 rounded-top header-form">Faça seu cadastro</div>
+            <div className="mt-4 col-md-12">Já é cadastrado?       
+              <Link className="col-md-1" to="/login">
+                Entrar
+              </Link>
+            </div>
+            <Form
+              onSubmit={this.handleRegister}
               ref={c => {
-                this.checkBtn = c;
+                this.form = c;
               }}
-            />
-          </Form>
+            >
+              {!this.state.successful && (
+                <div>
+                  <div className="form-group">
+                    <label htmlFor="username"></label>
+                    <Input
+                      type="text"
+                      className="form-control"
+                      name="username"
+                      value={this.state.username}
+                      placeholder="Digite aqui seu nome"
+                      onChange={this.onChangeUsername}
+                      validations={[required, vusername]}
+                    />
+                  </div>
+
+                <div className="form-group">
+                    <label htmlFor="email"></label>
+                    <Input
+                      type="text"
+                      className="form-control mb-3"
+                      name="email"
+                      value={this.state.email}
+                      placeholder="E-mail"
+                      onChange={this.onChangeEmail}
+                      validations={[required, email]}
+                    />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="password"></label>
+                    <Input
+                      type="password"
+                      className="form-control mb-3 pt-2"
+                      name="password"
+                      value={this.state.password}
+                      placeholder="Senha"
+                      onChange={this.onChangePassword}
+                      validations={[required, vpassword]}
+                    />
+                </div>
+                  <div className="center">
+                    <div className="form-group">
+                      <button className="btn-submit-form">Cadastrar-se</button>
+                    </div>
+                  </div>  
+                </div>
+              )}
+
+              {this.state.message && (
+                <div className="form-group">
+                  <div
+                    className={
+                      this.state.successful
+                        ? "alert alert-success"
+                        : "alert alert-danger"
+                    }
+                    role="alert"
+                  >
+                    {this.state.message}
+                  </div>
+                </div>
+              )}
+              <CheckButton
+                style={{ display: "none" }}
+                ref={c => {
+                  this.checkBtn = c;
+                }}
+              />
+            </Form>
+          </div>
         </div>
-      </div>
-    );
+    )
   }
 }

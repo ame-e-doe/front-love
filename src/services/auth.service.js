@@ -37,7 +37,7 @@ const AuthService = {
   register,
   login,
   logout,
-  getCurrentUser,
+  getCurrentUser
 };
 
 export default AuthService;
