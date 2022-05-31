@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from "react-validation/build/input";
 import Form from 'react-validation/build/form';
 import CheckButton from 'react-validation/build/button';
-
+import '../styles/AddCreditCard.css'
 import CardService from '../../services/card-service'
 
 import "../../components/styles/AddCreditCard.css";

@@ -1,4 +1,4 @@
-import styles from '../styles/card-product.css'
+import styles from '../styles/CardProduct.css'
 import LinkButton from '../button/LinkButton';
 
 const DigitalProduct = ({products}) => {
