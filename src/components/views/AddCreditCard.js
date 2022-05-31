@@ -77,7 +77,7 @@ export default class AddCreditCard extends Component {
 
     onChangeSecurityCode(e) {
         this.setState({
-            securityCode: e.target.target
+            securityCode: e.target.value
         });
     }
 

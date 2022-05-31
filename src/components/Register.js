@@ -125,7 +125,6 @@ export default class Register extends Component {
 
   render() {
     return (
-     <body className="register" >
       <div className="row align-items-center justify-content-center">
           <div className="card shadow mb-5 bg-body rounded">
             <div className="p-4 rounded-top header-form">Faça seu cadastro</div>
@@ -211,8 +210,6 @@ export default class Register extends Component {
             </Form>
           </div>
         </div>
-
-      </body>  
     )
   }
 }

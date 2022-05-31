@@ -71,7 +71,6 @@ const Login = () => {
   };
 
   return (
-      <body className="login">
         <div className="row align-items-center justify-content-center">
           <div className="card shadow mb-5 bg-body rounded">
             <div className="p-4 rounded-top header-form">Entrar</div>
@@ -131,7 +130,6 @@ const Login = () => {
             </Form>
           </div>
           </div>
-        </body>
   );
 };
 
