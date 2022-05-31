@@ -8,6 +8,9 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import Cart from "./components/Cart"
+import DetailsProduct from './components/DetailsProduct';
+import ResumeOrder from './components/views/ResumeOrder';
+
 
 function Rotas() {
     return(
@@ -17,7 +20,8 @@ function Rotas() {
                 <Route exact path="/register" element={<Register/>} />
                 <Route exact path="/profile" element={<Profile/>} />
                 <Route exact path="/user" element={<BoardUser/>} />
-                <Route exact path="/cart" element={<Cart/>} />
+                <Route exact path="/cart/:idProduct" element={<Cart/>} />
+                <Route exact path="/detailsProduct/:id" element={<DetailsProduct/>} />
             </Routes>
     )
 }

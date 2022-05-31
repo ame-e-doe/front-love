@@ -5,7 +5,7 @@ import CardProducts from "../components/views/CardProduct"
 
 const Home = () => {
 
-  const url = "localhost:8080/api/v1/products/list";
+  const url = "http://localhost:8080/api/products/list";
   const [products, setProducts] = useState([]);
 
   useEffect(()=> {
@@ -13,7 +13,7 @@ const Home = () => {
     .then(response => {
 
       console.log(response);
-      setProducts(response);
+      setProducts(response.data);
 
     })
     .catch(error => console.log(error))
