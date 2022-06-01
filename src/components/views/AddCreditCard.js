@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Input from "react-validation/build/input";
 import Form from 'react-validation/build/form';
 import CheckButton from 'react-validation/build/button';
-
+import '../styles/AddCreditCard.css'
 import CardService from '../../services/card-service'
 
 import "../../components/styles/AddCreditCard.css";
@@ -48,9 +48,9 @@ export default class AddCreditCard extends Component {
 
         this.state = {
             cardNumber: '',
+            securityCode: '',
             printedName: '',
             expirationTime:'',
-            securityCode: '',
             successful: false,
             message: '',
         };
@@ -94,9 +94,10 @@ export default class AddCreditCard extends Component {
         if(this.checkBtn.context._errors.length === 0) {
             CardService.saveCard(
                 this.state.cardNumber,
+                this.state.securityCode,
                 this.state.printedName,
                 this.state.expirationTime,
-                this.state.securityCode
+                
             ).then(
                 response => {
                     this.setState({

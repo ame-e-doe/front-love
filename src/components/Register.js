@@ -125,13 +125,16 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div className="row align-items-center justify-content-center">
-          <div className="card shadow mb-5 bg-body rounded">
+      <div className="centraliza">
+          <div className="card card-container">
             <div className="p-4 rounded-top header-form">Faça seu cadastro</div>
-            <div className="mt-4 col-md-12">Já é cadastrado?       
-              <Link className="col-md-1" to="/login">
-                Entrar
-              </Link>
+              <div className="mt col-md-12">
+                <div>
+                  <p className="text-center">Já é cadastrado?</p>
+                </div>  
+                <Link to="/login">
+                  <p className="text-center">Entrar</p>
+                </Link>
             </div>
             <Form
               onSubmit={this.handleRegister}
@@ -142,7 +145,7 @@ export default class Register extends Component {
               {!this.state.successful && (
                 <div>
                   <div className="form-group">
-                    <label htmlFor="username"></label>
+                    <label htmlFor="username">Como gostaria de ser chamado?</label>
                     <Input
                       type="text"
                       className="form-control"
@@ -155,7 +158,7 @@ export default class Register extends Component {
                   </div>
 
                 <div className="form-group">
-                    <label htmlFor="email"></label>
+                    <label htmlFor="email">Digite aqui seu e-mail</label>
                     <Input
                       type="text"
                       className="form-control mb-3"
@@ -168,7 +171,7 @@ export default class Register extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="password"></label>
+                    <label htmlFor="password">Digite sua senha</label>
                     <Input
                       type="password"
                       className="form-control mb-3 pt-2"
@@ -179,11 +182,9 @@ export default class Register extends Component {
                       validations={[required, vpassword]}
                     />
                 </div>
-                  <div className="center">
                     <div className="form-group">
                       <button className="btn-submit-form">Cadastrar-se</button>
                     </div>
-                  </div>  
                 </div>
               )}
 
