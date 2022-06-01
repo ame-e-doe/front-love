@@ -1,5 +1,7 @@
-import styles from '../styles/card-product.css'
+import styles from '../styles/CardProduct.css'
 import LinkButton from '../button/LinkButton';
+import '../styles/ContainerBuyProduct.css'
+import '../styles/ResumeOrder.css'
 
 const DigitalProduct = ({products}) => {
   
