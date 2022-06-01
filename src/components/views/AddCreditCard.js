@@ -48,9 +48,9 @@ export default class AddCreditCard extends Component {
 
         this.state = {
             cardNumber: '',
+            securityCode: '',
             printedName: '',
             expirationTime:'',
-            securityCode: '',
             successful: false,
             message: '',
         };
@@ -94,9 +94,10 @@ export default class AddCreditCard extends Component {
         if(this.checkBtn.context._errors.length === 0) {
             CardService.saveCard(
                 this.state.cardNumber,
+                this.state.securityCode,
                 this.state.printedName,
                 this.state.expirationTime,
-                this.state.securityCode
+                
             ).then(
                 response => {
                     this.setState({

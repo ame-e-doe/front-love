@@ -4,7 +4,6 @@ import { useEffect, useState } from "react/cjs/react.development";
 import ContainerBuyProduct from './views/ContainerBuyProduct';
 import ContainerDescriptionProduct from './views/ContainerDescriptionProduct';
 import ContainerPropertiesProduct from './views/ContainerPropertiesProduct';
-import "./styles/DetailsProduct.css"
 
 function DetailsProduct() {
     
