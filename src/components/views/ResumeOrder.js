@@ -28,7 +28,6 @@ function ResumeOrder({product}) {
                 </div>
             </div>
         </div>
-    //</section>
     );
 
 };

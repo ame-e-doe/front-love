@@ -11,10 +11,7 @@ const Home = () => {
   useEffect(()=> {
     axios.get(url)
     .then(response => {
-
-      console.log(response);
       setProducts(response.data);
-
     })
     .catch(error => console.log(error))
 

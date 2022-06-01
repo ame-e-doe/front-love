@@ -1,12 +1,4 @@
 function CartProducts({srcImage, title, description, value}) {
-
-  /*const p = product[0];
-  let title = p.title;
-  let description = p.description;
-  let category = p.category.description;
-  let value = p.value;
-  let srcImage = p.url;*/
-
     return (
           <div className="container">
             <div className="d-flex justify-content-center row">
