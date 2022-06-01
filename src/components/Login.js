@@ -71,66 +71,66 @@ const Login = () => {
   };
 
   return (
-        <div className="row align-items-center justify-content-center">
-          <div className="card shadow mb-5 bg-body rounded">
-            <div className="p-4 rounded-top header-form">Entrar</div>
-              <div className="mt-5 col-md-12">Ainda não fez o cadastro?
-                <div>
-                <Link className="col-md-1" to="/register">
-                  Cadastre-se agora!
-                </Link>
-                </div>       
-              </div>
-            <Form onSubmit={handleLogin} ref={form}>
-              <div className="form-group">
-                <label htmlFor="username"></label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="username"
-                  value={username}
-                  onChange={onChangeUsername}
-                  placeholder="Digite seu e-mail"
-                  validations={[required]}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="password"></label>
-                <Input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  value={password}
-                  onChange={onChangePassword}
-                  placeholder="Digite sua senha"
-                  validations={[required]}
-                />
-              </div>
-
-            <div className="center">
-              <div className="form-group">
-                <button className="btn-submit-form" disabled={loading}>
-                  {loading && (
-                    <span className="spinner-border spinner-border-sm"></span>
-                  )}
-                  <span>Login</span>
-                </button>
-              </div>
-            </div> 
-
-              {message && (
-                <div className="form-group">
-                  <div className="alert alert-danger" role="alert">
-                    {message}
+          <div className="centraliza">
+            <div className="card card-container">
+              <div className="p-4 rounded-top header-form">Entrar</div>
+                <div className="mt-2 col-md-12">
+                  <div>
+                    <p className="text-center">Ainda não possui cadastro?</p>
                   </div>
+                  <Link to="/register">
+                    <p className="text-center">Cadastre-se agora!</p>
+                  </Link>  
                 </div>
-              )}
-              <CheckButton style={{ display: "none" }} ref={checkBtn} />
-            </Form>
-          </div>
-          </div>
+              <Form onSubmit={handleLogin} ref={form}>
+                <div className="form-group">
+                  <label htmlFor="username">Endereço de e-mail</label>
+                  <Input
+                    type="text"
+                    className="form-control"
+                    name="username"
+                    value={username}
+                    onChange={onChangeUsername}
+                    placeholder="Seu e-mail"
+                    validations={[required]}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="password">Senha</label>
+                  <Input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    value={password}
+                    onChange={onChangePassword}
+                    placeholder="Digite aqui sua senha"
+                    validations={[required]}
+                  />
+                </div>
+                <div className="form-group">
+                  <button className="btn-submit-form" disabled={loading}>
+                    {loading && (
+                      <span className="spinner-border spinner-border-sm"></span>
+                    )}
+                    <span>Login</span>
+                  </button>
+                </div>
+                {message && (
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                )}
+                <CheckButton style={{ display: "none" }} ref={checkBtn} />
+              </Form>
+            </div>
+          </div>  
   );
+  
 };
+
+
 
 export default Login;
