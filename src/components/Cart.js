@@ -5,6 +5,7 @@ import MyCreditCards from "./views/MyCreditCards";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react/cjs/react.development";
 import axios from "axios";
+import LinkButton from "./button/LinkButton";
 
 function Cart() {
 
@@ -66,7 +67,9 @@ function Cart() {
         <ResumeOrder product={product} />
         <ContainerDonate />
         <div>
-          <button onClick={finalizarVenda} type="button" className="btn btn-primary">Finalizar</button>
+          <button onClick={finalizarVenda} type="button" className="btn btn-primary">
+            <LinkButton to={"/buy-success"} text={"Finalizar"}/>
+          </button>
         </div>
       </div>
     </div>
