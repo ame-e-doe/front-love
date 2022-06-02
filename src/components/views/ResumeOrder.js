@@ -9,10 +9,6 @@ function ResumeOrder({product}) {
                 <div className="pt-2 px-2 container-conteudo">
                     <div>
                         <p className="mb-2">
-                            <span>Itens:</span>
-                            <span style={{textAlign: "end"}}>2</span>
-                        </p>
-                        <p className="mb-2">
                             <span>Total:</span>
                             <span style={{textAlign: "end"}}>R$: {product.value}</span> 
                         </p>

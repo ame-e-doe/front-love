@@ -30,6 +30,27 @@ function Cart() {
     .catch(error => console.log(error));
   }, []);
 
+  const sale = {
+    value: product.value,
+    products: [
+      {
+        url: product.url,
+        title: product.title,
+        description: product.description,
+        value: product.value
+      }
+    ]
+  }
+
+  function finalizarVenda() {
+    let url = 'http://localhost:8080/api/sales/create/1'
+    axios.post(url, sale)
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => console.log(error));
+  }
+
   return (
     <div key={product.id} className="col-12 row justify-content-center">
       <div className="col-6 m-3 ">
@@ -45,7 +66,7 @@ function Cart() {
         <ResumeOrder product={product} />
         <ContainerDonate />
         <div>
-          <button type="button" className="btn btn-primary">Finalizar</button>
+          <button onClick={finalizarVenda} type="button" className="btn btn-primary">Finalizar</button>
         </div>
       </div>
     </div>
