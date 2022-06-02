@@ -74,15 +74,14 @@ const Login = () => {
           <div className="centraliza">
             <div className="card card-container">
               <div className="p-4 rounded-top header-form">Entrar</div>
-                <div className="mt-2 col-md-12">
+                <div className="pt-2 px-2 container-conteudo">
                   <div>
                     <p className="text-center">Ainda não possui cadastro?</p>
                   </div>
                   <Link to="/register">
                     <p className="text-center">Cadastre-se agora!</p>
                   </Link>  
-                </div>
-              <Form onSubmit={handleLogin} ref={form}>
+                  <Form onSubmit={handleLogin} ref={form}>
                 <div className="form-group">
                   <label htmlFor="username">Endereço de e-mail</label>
                   <Input
@@ -108,7 +107,7 @@ const Login = () => {
                     validations={[required]}
                   />
                 </div>
-                <div className="form-group">
+                <div className="m-2">
                   <button className="btn-submit-form" disabled={loading}>
                     {loading && (
                       <span className="spinner-border spinner-border-sm"></span>
@@ -127,6 +126,8 @@ const Login = () => {
               </Form>
             </div>
           </div>  
+                </div>
+              
   );
   
 };

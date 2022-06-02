@@ -10,6 +10,7 @@ import BoardUser from "./components/BoardUser";
 import Cart from "./components/Cart"
 import DetailsProduct from './components/DetailsProduct';
 import AddCreditCard from "./components/views/AddCreditCard"
+import BuySuccess from "./components/views/BuySuccess";
 
 function Rotas() {
     return(
@@ -22,6 +23,7 @@ function Rotas() {
                 <Route exact path="/cart/:idProduct" element={<Cart/>} />
                 <Route exact path="/detailsProduct/:id" element={<DetailsProduct/>} />
                 <Route exact path="/add-cartao" element={<AddCreditCard/>} />
+                <Route exact path="/buy-success" element={<BuySuccess/>} />
             </Routes>
     )
 }

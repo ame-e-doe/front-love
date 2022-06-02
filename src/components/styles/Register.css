@@ -37,4 +37,12 @@
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-size: x-large;
-}  
+}
+
+.container-conteudo {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  background-color: #303339;
+  color: #fff;
+}
