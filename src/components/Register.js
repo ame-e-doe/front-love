@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
@@ -29,7 +29,7 @@ const email = (value) => {
   }
 };
 
-const vusername = value => {
+const vusername = (value) => {
   if (value.length < 3 || value.length > 20) {
     return (
       <div className="alert alert-danger" role="alert">
@@ -62,25 +62,25 @@ export default class Register extends Component {
       email: "",
       password: "",
       successful: false,
-      message: ""
+      message: "",
     };
   }
 
   onChangeUsername(e) {
     this.setState({
-      username: e.target.value
+      username: e.target.value,
     });
   }
 
   onChangeEmail(e) {
     this.setState({
-      email: e.target.value
+      email: e.target.value,
     });
   }
 
   onChangePassword(e) {
     this.setState({
-      password: e.target.value
+      password: e.target.value,
     });
   }
 
@@ -89,7 +89,7 @@ export default class Register extends Component {
 
     this.setState({
       message: "",
-      successful: false
+      successful: false,
     });
 
     this.form.validateAll();
@@ -100,13 +100,16 @@ export default class Register extends Component {
         this.state.email,
         this.state.password
       ).then(
-        response => {
+        (response) => {
           this.setState({
-            message: 'Enviamos um link de ativação para: ' + response.data.message + '. Ative-o para fazer seu login.',
-            successful: true
+            message:
+              "Enviamos um link de ativação para: " +
+              response.data.message +
+              ". Ative-o para fazer seu login.",
+            successful: true,
           });
         },
-        error => {
+        (error) => {
           const resMessage =
             (error.response &&
               error.response.data &&
@@ -116,7 +119,7 @@ export default class Register extends Component {
 
           this.setState({
             successful: false,
-            message: resMessage
+            message: resMessage,
           });
         }
       );
@@ -126,26 +129,27 @@ export default class Register extends Component {
   render() {
     return (
       <div className="centraliza">
-          <div className="card card-container">
-            <div className="p-4 rounded-top header-form">Faça seu cadastro</div>
-              <div className="mt col-md-12">
-                <div>
-                  <p className="text-center">Já é cadastrado?</p>
-                </div>  
-                <Link to="/login">
-                  <p className="text-center">Entrar</p>
-                </Link>
+        <div className="card card-container">
+          <div className="p-4 rounded-top header-form">Faça seu cadastro</div>
+          <div className="pt-2 px-2 container-conteudo">
+            <div>
+              <p className="text-center">Já é cadastrado?</p>
             </div>
+            <Link to="/login">
+              <p className="text-center">Entrar</p>
+            </Link>
             <Form
               onSubmit={this.handleRegister}
-              ref={c => {
+              ref={(c) => {
                 this.form = c;
               }}
             >
               {!this.state.successful && (
                 <div>
                   <div className="form-group">
-                    <label htmlFor="username">Como gostaria de ser chamado?</label>
+                    <label htmlFor="username">
+                      Como gostaria de ser chamado?
+                    </label>
                     <Input
                       type="text"
                       className="form-control"
@@ -157,7 +161,7 @@ export default class Register extends Component {
                     />
                   </div>
 
-                <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="email">Digite aqui seu e-mail</label>
                     <Input
                       type="text"
@@ -168,9 +172,9 @@ export default class Register extends Component {
                       onChange={this.onChangeEmail}
                       validations={[required, email]}
                     />
-                </div>
+                  </div>
 
-                <div className="form-group">
+                  <div className="form-group">
                     <label htmlFor="password">Digite sua senha</label>
                     <Input
                       type="password"
@@ -181,10 +185,10 @@ export default class Register extends Component {
                       onChange={this.onChangePassword}
                       validations={[required, vpassword]}
                     />
-                </div>
-                    <div className="form-group">
-                      <button className="btn-submit-form">Cadastrar-se</button>
-                    </div>
+                  </div>
+                  <div className="m-2">
+                    <button className="btn-submit-form">Cadastrar-se</button>
+                  </div>
                 </div>
               )}
 
@@ -204,13 +208,14 @@ export default class Register extends Component {
               )}
               <CheckButton
                 style={{ display: "none" }}
-                ref={c => {
+                ref={(c) => {
                   this.checkBtn = c;
                 }}
               />
             </Form>
           </div>
         </div>
-    )
+      </div>
+    );
   }
 }
